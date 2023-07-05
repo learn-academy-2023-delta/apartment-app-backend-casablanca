@@ -112,6 +112,7 @@ RSpec.describe Apartment, type: :model do
     )
     expect(apartment.errors[:bedrooms]).to include("can't be blank")
   end
+
   it 'should validate bathrooms' do
     apartment = user.apartments.create(
       street: 'John St.',
@@ -125,6 +126,7 @@ RSpec.describe Apartment, type: :model do
     )
     expect(apartment.errors[:bathrooms]).to include("can't be blank")
   end
+
   it 'should validate pets' do
     apartment = user.apartments.create(
       street: 'John St.',
@@ -138,6 +140,7 @@ RSpec.describe Apartment, type: :model do
     )
     expect(apartment.errors[:pets]).to include("can't be blank")
   end
+
   it 'should validate image' do
     apartment = user.apartments.create(
       street: 'John St.',
@@ -151,4 +154,5 @@ RSpec.describe Apartment, type: :model do
     )
     expect(apartment.errors[:image]).to include("can't be blank")
   end
+  
 end
