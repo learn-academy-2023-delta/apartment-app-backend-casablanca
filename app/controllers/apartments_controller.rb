@@ -27,7 +27,9 @@ class ApartmentsController < ApplicationController
     end
 
     def destroy
-        
+        apartment = Apartment.find(params[:id])
+        apartment.destroy
+        render json: apartment
     end
 
     # Handle strong parameters, so we are secure
