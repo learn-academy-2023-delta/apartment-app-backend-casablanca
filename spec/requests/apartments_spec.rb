@@ -109,4 +109,28 @@ RSpec.describe "Apartments", type: :request do
       expect(updated_apartment.price).to eq "3000"
     end
   end
+  describe "DELETE /destroy" do
+    it "deletes a apartment" do
+      user1 = User.where(email: "test1@example.com").first_or_create(password: "password", password_confirmation: "password")
+
+      apartment = Apartment.create(
+        user_id: user1.id,
+        street: 'ABC Sesame Street',
+        unit: '20',
+        city: 'Sesame',
+        state: 'MUPPET',
+        square_footage: 3000,
+        price: "1900",
+        bedrooms: 5,
+        bathrooms: 3,
+        pets: "puppets only",
+        image: "https://upload.wikimedia.org/wikipedia/commons/0/00/Sesame_Street_buildings_%28193090534%29.jpg"
+    )
+
+      delete "/apartments/#{apartment.id}"
+      new_apartment = Apartment.all
+      expect(new_apartment).to be_empty
+      expect(response).to have_http_status(200)
+    end
+  end
 end
